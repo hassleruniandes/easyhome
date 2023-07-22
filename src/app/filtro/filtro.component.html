@@ -1,0 +1,44 @@
+<section id="filtroContainer" class="filtro-container">
+  <h2 class="filtro-title w-100">Refina tu búsqueda</h2>
+
+  <div class="column">
+    <div class="filtro-group">
+      <label for="type">Tipo de Propiedad:</label>
+      <select [(ngModel)]="selectedOptions.type" name="type" (ngModelChange)="applyFilter()">
+        <option *ngFor="let type of publicationTypes" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+
+    <div class="filtro-group">
+      <label for="city">Ciudad:</label>
+      <select [(ngModel)]="selectedOptions.city" name="city" (ngModelChange)="applyFilter()">
+        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="filtro-group">
+      <label for="location">Ubicación:</label>
+      <select [(ngModel)]="selectedOptions.location" name="location" (ngModelChange)="applyFilter()">
+        <option *ngFor="let location of locations" [value]="location">{{ location }}</option>
+      </select>
+    </div>
+
+    <div class="filtro-group">
+      <label for="minPrice">Precio Mínimo:</label>
+      <select [(ngModel)]="selectedOptions.minPrice" name="minPrice" (ngModelChange)="applyFilter()">
+        <option *ngFor="let price of minPrices" [value]="price">{{ price | currency }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="filtro-group">
+      <label for="maxPrice">Precio Máximo:</label>
+      <select [(ngModel)]="selectedOptions.maxPrice" name="maxPrice" (ngModelChange)="applyFilter()">
+        <option *ngFor="let price of maxPrices" [value]="price">{{ price | currency }}</option>
+      </select>
+    </div>
+  </div>
+</section>

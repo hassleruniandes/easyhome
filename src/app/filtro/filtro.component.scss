@@ -1,0 +1,89 @@
+// Estilos para el filtro
+$filtro-color-principal: #fff;
+$filtro-color-opcion: #f9e7f2;
+$filtro-color-texto: #000;
+
+.w-100{
+  width: 100%;
+}
+
+.filtro-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: $filtro-color-principal;
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+  .filtro-title{
+    padding: 10px;
+  }
+  .column {
+    flex: 1;
+    padding: 0 10px;
+
+    .filtro-group {
+      display: flex; /* Agregamos esta línea para alinear los elementos internamente */
+      align-items: center; /* Centramos verticalmente los elementos en el grupo */
+      margin-bottom: 10px;
+      label {
+        flex: 0 0 120px; /* Ajusta el ancho de las etiquetas para que sean iguales */
+        margin-right: 10px;
+        color: $filtro-color-texto;
+      }
+      select {
+        flex: 1; /* Utiliza el espacio disponible restante */
+        border: 1px solid $filtro-color-opcion;
+        background-color: $filtro-color-opcion;
+        color: $filtro-color-texto;
+        padding: 8px 12px;
+        border-radius: 4px;
+        outline: none;
+        cursor: pointer;
+      }
+    }
+
+  }
+
+}
+
+.filtro-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+label {
+  margin-right: 10px;
+  color: $filtro-color-texto;
+}
+
+select {
+  border: 1px solid $filtro-color-opcion;
+  background-color: $filtro-color-opcion;
+  color: $filtro-color-texto;
+  padding: 8px 12px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+button {
+  background-color: $filtro-color-opcion;
+  color: $filtro-color-texto;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
+
+  &:hover {
+    background-color: darken($filtro-color-opcion, 5%);
+  }
+}

@@ -1,27 +1,29 @@
 <div class="publications">
-
-  <div class="card" *ngFor="let publication of publications">
-    <img src="{{publication.image}}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{ publication.title }}</h5>
-      <p class="card-text">{{ publication.description }}</p>
-      <div class="buttons">
-        <a href="#" class="btn btn-primary">Ver más</a>
-        <button class="btn btn-secondary" (click)="open360View(publication.iframeUrl)">360°</button>
+  <section class="publicaciones-container">
+    <div class="card" *ngFor="let publication of publications">
+      <img [src]="publication.image" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ publication.title }}</h5>
+        <p class="card-text">{{ publication.description }}</p>
+        <div class="info">
+          <p class="tipo">{{ publication.type }}</p>
+          <p class="ubicacion">{{ publication.city }}</p>
+          <p class="precio">{{ publication.price | currency }}</p>
+        </div>
+        <div class="buttons">
+          <a href="#" class="btn btn-primary">Ver más</a>
+          <button class="btn btn-secondary" (click)="open360View(publication.iframeUrl)">Vista 360° 🌐</button>
+        </div>
       </div>
     </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="backdrop" *ngIf="modalOpen"></div>
+  <div class="modal" *ngIf="modalOpen">
+    <div class="modal-content">
+      <span class="close-btn" (click)="closeModal()">&times;</span>
+      <iframe [src]="getSafeUrl()" width="800px" height="650px"></iframe>
+    </div>
   </div>
-
-<!-- Modal -->
-<div class="backdrop" *ngIf="modalOpen"></div>
-<div class="modal" *ngIf="modalOpen">
-  <div class="modal-content">
-    <!-- Contenido del modal aquí -->
-    <span class="close-btn" (click)="closeModal()">&times;</span>
-    <iframe [src]="getSafeUrl()" width="800px" height="650px"></iframe>
-    <!-- Botón para cerrar el modal -->
-  </div>
-</div>
-
-
 </div>

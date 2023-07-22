@@ -1,38 +1,104 @@
+// Variables de color
+$color-principal: #fff;
+$color-opcion: #f9e7f2;
+$color-texto: #000;
+$color-primary: #d854a5;
+$color-view360: #b6efec;
+
 .publications {
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.publicaciones-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  padding-block: 2rem;
-  .publication{
-    background: #f7f7f7;
+  gap: 20px;
+}
+
+.card {
+  background-color: $color-principal;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+
+  .card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
   }
 
-  .buttons {
-    display: flex;
-    justify-content: space-around;
-  }
+  .card-body {
+    padding: 20px;
 
-  .buttons button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+    .card-title {
+      color: $color-texto;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
 
-  .buttons button:nth-child(1) {
-    background-color: #007bff;
-    color: #fff;
-  }
+    .card-text {
+      color: $color-texto;
+      margin-bottom: 15px;
+    }
 
-  .buttons button:nth-child(2) {
-    background-color: #f9e7f2;
-    color: #000;
-  }
+    .info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      color: $color-texto;
 
-  .buttons button:hover {
-    opacity: 0.8;
-  }
+      .tipo,
+      .ubicacion,
+      .precio {
+        flex: 1;
+      }
 
+      .ubicacion {
+        margin-left: 20px;
+      }
+
+      .precio {
+        margin-left: 20px;
+        text-align: right;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+
+      .btn {
+        flex: 1;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .btn-primary {
+        background-color: $color-primary;
+        color: #fff;
+      }
+
+      .btn-secondary {
+        background-color: $color-view360;
+        color: $color-texto;
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+.card.hidden {
+  opacity: 0;
+  pointer-events: none; // Evita que los elementos ocultos sean interactivos
 }
 
 .backdrop {

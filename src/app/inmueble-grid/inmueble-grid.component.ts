@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PublicationsService } from '../services/publications.service';
 
 @Component({
   selector: 'app-inmueble-grid',
@@ -7,53 +8,17 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./inmueble-grid.component.scss'],
 })
 export class InmuebleGridComponent implements OnInit {
-  constructor(private sanitizer: DomSanitizer) {}
 
-  publications: any[] = [
-    {
-      id: 1,
-      title: 'Hermosa Casa',
-      description: 'Encantadora casa con jardín y piscina.',
-      image: '/assets/inmueblegrid.PNG',
-      iframeUrl: 'https://bolivar.perspectiva360.com/zipaquira-hacienda-san-jose/apartamento-68m2/hacienda-san-jose-68m2.html'
-    },
-    {
-      id: 2,
-      title: 'Apartamento Moderno',
-      description: 'Apartamento en el centro de la ciudad.',
-      image: '/assets/inmueblegrid.PNG',
-      iframeUrl: 'https://bolivar.perspectiva360.com/zipaquira-hacienda-san-jose/apartamento-68m2/hacienda-san-jose-68m2.html'
-    },
-    {
-      id: 3,
-      title: 'Villa de Lujo',
-      description: 'Espectacular villa con vista al mar.',
-      image: '/assets/inmueblegrid.PNG',
-      iframeUrl: 'https://bolivar.perspectiva360.com/zipaquira-hacienda-san-jose/apartamento-68m2/hacienda-san-jose-68m2.html'
-    },
-    {
-      id: 1,
-      title: 'Hermosa Casa',
-      description: 'Encantadora casa con jardín y piscina.',
-      image: '/assets/inmueblegrid.PNG',
-      iframeUrl: 'https://bolivar.perspectiva360.com/zipaquira-hacienda-san-jose/apartamento-68m2/hacienda-san-jose-68m2.html'
-    },
-    {
-      id: 2,
-      title: 'Apartamento Moderno',
-      description: 'Apartamento en el centro de la ciudad.',
-      image: '/assets/inmueblegrid.PNG',
-      iframeUrl: 'https://bolivar.perspectiva360.com/zipaquira-hacienda-san-jose/apartamento-68m2/hacienda-san-jose-68m2.html'
-    },
-    {
-      id: 3,
-      title: 'Villa de Lujo',
-      description: 'Espectacular villa con vista al mar.',
-      image: '/assets/inmueblegrid.PNG',
-      iframeUrl: 'https://bolivar.perspectiva360.com/zipaquira-hacienda-san-jose/apartamento-68m2/hacienda-san-jose-68m2.html'
-    },
-  ];
 
+  publications: any[] = [];
+
+  constructor(private publicationsService: PublicationsService, private sanitizer: DomSanitizer) { }
+
+  ngOnInit() {
+    this.publicationsService.filteredPublications$.subscribe(filteredPublications => {
+      this.publications = filteredPublications;
+    });
+  }
 
   modalOpen = false;
   currentIframeUrl: string = '';
@@ -71,5 +36,4 @@ export class InmuebleGridComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.currentIframeUrl);
   }
 
-  ngOnInit(): void {}
 }

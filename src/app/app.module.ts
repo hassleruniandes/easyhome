@@ -7,7 +7,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { InmuebleGridComponent } from './inmueble-grid/inmueble-grid.component';
 import { FiltroComponent } from './filtro/filtro.component';
 import { FormsModule } from '@angular/forms';
-
+import { GoogleTagManagerService } from "angular-google-tag-manager";
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +20,10 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: 'googleTagManagerId', useValue: "GTM-NX8RCXT4"},
+    GoogleTagManagerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

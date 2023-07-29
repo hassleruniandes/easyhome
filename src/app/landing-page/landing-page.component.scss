@@ -102,3 +102,11 @@ img {
   max-width: 100%;
   height: auto;
 }
+@media (max-width: 720px) {
+  .section-blocks .block{
+   width: 100%;
+  }
+  .container-section{
+    display: block;
+  }
+  }

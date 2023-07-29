@@ -144,3 +144,20 @@ $color-view360: #b6efec;
   border-radius: 25px;
   cursor: pointer;
 }
+@media (max-width: 720px) {
+.publicaciones-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+}
+.section-blocks .block{
+ width: 100%;
+}
+}
+@media (min-width:721px) and (max-width: 1024px) {
+.publicaciones-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+}
